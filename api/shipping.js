@@ -91,17 +91,13 @@ export default async function handler(req, res) {
     }
 
 
-    
+
     // =========================
     // RESPOSTA FINAL
     // =========================
 
     return res.status(200).json({
-      success: true,
-      cep: cepLimpo,
-      retirada,
-      motoboy,
-      fretes
+    raw: data
     });
 
   } catch (error) {
