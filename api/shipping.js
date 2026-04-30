@@ -91,13 +91,13 @@ export default async function handler(req, res) {
     }
 
 
-
+    
     // =========================
     // RESPOSTA FINAL
     // =========================
 
     return res.status(200).json({
-    raw: data
+        raw: data
     });
 
   } catch (error) {
