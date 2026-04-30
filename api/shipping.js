@@ -100,7 +100,11 @@ export default async function handler(req, res) {
         raw: data
     });
 
-  } catch (error) {
-    return res.status(500).json({ error: 'Erro ao calcular frete' });
-  }
+    } catch (error) {
+        console.error('ERRO FRENET:', error);
+        return res.status(500).json({
+            error: 'Erro ao calcular frete',
+            detalhe: error.message
+        });
+    }
 }
