@@ -49,8 +49,9 @@ export default async function handler(req, res) {
       const response = await fetch('https://api.frenet.com.br/shipping/quote', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'token': process.env.FRENET_TOKEN
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'token': process.env.FRENET_TOKEN
         },
         body: JSON.stringify({
           SellerCEP: "80000000", // seu CEP origem
@@ -97,11 +98,12 @@ export default async function handler(req, res) {
     // =========================
 
     return res.status(200).json({
-        raw: data
+        raw: data        
     });
 
     } catch (error) {
         console.error('ERRO FRENET:', error);
+        console.log("FRENET RESPONSE:", data);
         return res.status(500).json({
             error: 'Erro ao calcular frete',
             detalhe: error.message
